@@ -6,7 +6,7 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 13:31:01 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/05 13:41:11 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/06 12:21:41 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void	pu(t_list **listA, t_list **listB)
 	ft_lstdelone(to_nul);
 }
 
-void	push(t_list **listA, t_list **listB, int b)
+void	push(t_list **listA, t_list **listB, char c)
 {
 	pu(listA, listB);
-	if (b == 1)
+	if (c == 'a')
 		ft_printf("pa\n");
-	if (b == 2)
+	if (c == 'b')
 		ft_printf("pb\n");
 }
 

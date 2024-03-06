@@ -6,7 +6,7 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:28:52 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/05 14:37:50 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/06 10:59:42 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	set_index(t_list **a)
 		else if (i > mid)
 		{
 			(temp)->middle = 2;
-			(temp)->price = ft_lstsize - i;
+			(temp)->price = ft_lstsize(*a) - i;
 		}
 		(temp) = (temp)->next;
 		i++;

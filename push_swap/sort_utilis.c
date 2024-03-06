@@ -6,21 +6,21 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:44:43 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/05 14:45:44 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/06 12:32:57 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-//void	stampaLista(t_list *lista)
-//{
-//	while (lista != NULL)
-//	{
-//		printf("%d index:%d	", lista->content, lista->index);
-//		lista = lista->next;
-//	}
-//	printf("\n");
-//}
+void	stampaLista(t_list *lista)
+{
+	while (lista != NULL)
+	{
+		printf("%d ", lista->content);
+		lista = lista->next;
+	}
+	printf("\n");
+}
 
 int	find_min(t_list *a)
 {
@@ -70,23 +70,6 @@ void	cheak_goal_max(t_list *stak_start, t_list *stack_goal)
 		(tmp) = (tmp)->next;
 	}
 }
-void	make_cheapest(t_list **start, t_list **finish, char c)
-{
-	t_list	*temp;
-	t_list	*obj;
-	int		i;
-
-	temp = *start;
-	i = INT_MAX;
-	while (temp)
-	{
-		obj = finish;
-		while (obj->index != temp->goal)
-			obj = obj->next;
-		if (temp->price + obj->price < i)
-			i = (temp->price + obj->price);
-	}
-}
 
 void	only_five(t_list **a, t_list **b)
 {
@@ -94,10 +77,9 @@ void	only_five(t_list **a, t_list **b)
 	set_index(a);
 	set_index(b);
 	cheak_goal_max((*b), (*a));
-	make_cheapest(b, a, b);
+	make_cheapest(b, a, 'b');
 	stampaLista(*a);
 	stampaLista(*b);
-	printf("goal %d:%d\ngoal %d:%d", (*b)->content, (*b)->goal, (*b)->next->content, (*b)->next->goal);
 }
 
 void	sort_multi(t_list **a, t_list **b, int nbr)
@@ -107,7 +89,7 @@ void	sort_multi(t_list **a, t_list **b, int nbr)
 	max = 2;
 	while (nbr > 3 || max > 0)
 	{
-		push(b, a, 1);
+		push(b, a, 'a');
 		nbr--;
 		max--;
 	}

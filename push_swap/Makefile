@@ -6,7 +6,7 @@
 #    By: fgori <fgori@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 15:44:57 by fgori             #+#    #+#              #
-#    Updated: 2024/02/29 15:59:42 by fgori            ###   ########.fr        #
+#    Updated: 2024/03/06 11:40:53 by fgori            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ file = main.c\
 		sa.c\
 		sort_utilis.c\
 		two_utlis.c\
+		multi_move.c\
 		utilis.c
 
 CC = cc
@@ -28,7 +29,7 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME): $(file)
-	@$(MAKE) -C libft
+	@$(MAKE) all -C libft
 	@$(MAKE) bonus -C libft
 	$(CC) $(CFLAGS) $(file) -L./libft -lft -o $(NAME)
 
