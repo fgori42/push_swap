@@ -6,7 +6,7 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:28:52 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/06 10:59:42 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/12 14:01:10 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,6 @@ t_list	*ft_lstnewint(int content)
 	return (new);
 }
 
-void	set_index(t_list **a)
-{
-	int		i;
-	int		mid;
-	t_list	*temp;
-
-	i = 0;
-	temp = *a;
-	mid = ft_lstsize(*a) / 2;
-	while (temp)
-	{
-		(temp)->index = i;
-		if (i <= mid)
-		{
-			(temp)->middle = 1;
-			(temp)->price = i;
-		}
-		else if (i > mid)
-		{
-			(temp)->middle = 2;
-			(temp)->price = ft_lstsize(*a) - i;
-		}
-		(temp) = (temp)->next;
-		i++;
-	}
-}
-
 int	is_in_order(t_list *a)
 {
 	while (a->next != NULL)
@@ -69,12 +42,19 @@ int	is_in_order(t_list *a)
 
 void	sort_three(t_list **a)
 {
-	if ((*a)->content > (*a)->next->content)
-		swap(a, 1);
-	else if ((*a)->content < (*a)->next->content)
-		rra(a, 'a');
-	if ((*a)->content > (*a)->next->content)
-		swap(a, 1);
+	while (!(is_in_order(*a)))
+	{
+		if ((*a)->content > (*a)->next->content
+			&& (*a)->next->content < (*a)->next->next->content
+			&& (*a)->content > (*a)->next->next->content)
+			ra(a, 'a');
+		else if ((*a)->content > (*a)->next->content)
+			swap(a, 1);
+		else if ((*a)->content < (*a)->next->content)
+			rra(a, 'a');
+		if ((*a)->content > (*a)->next->content)
+			swap(a, 1);
+	}
 }
 
 void	controll(t_list **a, t_list **b, int i)

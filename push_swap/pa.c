@@ -6,7 +6,7 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 13:31:01 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/06 12:21:41 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/07 14:58:07 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	push(t_list **listA, t_list **listB, char c)
 {
 	pu(listA, listB);
 	if (c == 'a')
-		ft_printf("pa\n");
-	if (c == 'b')
 		ft_printf("pb\n");
+	if (c == 'b')
+		ft_printf("pa\n");
 }
 
 // // Funzione per creare una lista casuale di numeri

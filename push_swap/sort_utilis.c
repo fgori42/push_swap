@@ -6,31 +6,23 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:44:43 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/06 12:32:57 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/08 13:26:34 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-void	stampaLista(t_list *lista)
-{
-	while (lista != NULL)
-	{
-		printf("%d ", lista->content);
-		lista = lista->next;
-	}
-	printf("\n");
-}
-
-int	find_min(t_list *a)
+int	find_max(t_list *a)
 {
 	long	n;
 	t_list	*tmp;
 	t_list	*id;
 
+	if (!a)
+		perror("Error\nnot found list");
 	tmp = a;
 	id = a;
-	n = LONG_MAX;
+	n = LONG_MIN;
 	while (tmp)
 	{
 		if (n < tmp->content)
@@ -42,61 +34,58 @@ int	find_min(t_list *a)
 	return (id->index);
 }
 
-void	cheak_goal_max(t_list *stak_start, t_list *stack_goal)
+int	find_min(t_list *a)
 {
-	long		chek;
-	int			i;
-	t_list		*tmp;
-	t_list		*circol;
+	long	n;
+	t_list	*tmp;
+	t_list	*id;
 
-	tmp = (stak_start);
+	if (!a)
+		perror("error\nnot found list");
+	tmp = a;
+	id = a;
+	n = LONG_MAX;
 	while (tmp)
 	{
-		i = 0;
-		chek = LONG_MAX;
-		circol = stack_goal;
-		while (circol)
-		{
-			if (circol->content > tmp->content && circol->content < chek)
-				i = circol->index;
-			if (circol->content > tmp->content && circol->content < chek)
-				chek = circol->content;
-			(circol) = (circol)->next;
-		}
-		if (chek == LONG_MAX)
-			tmp->goal = find_min(stack_goal);
-		else
-			tmp->goal = i;
-		(tmp) = (tmp)->next;
+		if (n > tmp->content)
+			n = tmp->content;
+		tmp = tmp->next;
 	}
+	while (id->content != n)
+		id = id->next;
+	return (id->index);
 }
 
 void	only_five(t_list **a, t_list **b)
 {
-	sort_three(a);
-	set_index(a);
-	set_index(b);
-	cheak_goal_max((*b), (*a));
-	make_cheapest(b, a, 'b');
-	stampaLista(*a);
-	stampaLista(*b);
+	while (ft_lstsize(*b) >= 1)
+	{
+		cheak_goal_max((*b), (*a));
+		make_cheapest(b, a, 'b');
+	}
+	set_zero(a);
 }
 
 void	sort_multi(t_list **a, t_list **b, int nbr)
 {
-	int	max;
+	int		max;
 
 	max = 2;
-	while (nbr > 3 || max > 0)
+	while (nbr > 3 && max > 0)
 	{
 		push(b, a, 'a');
 		nbr--;
 		max--;
 	}
-	if (ft_lstsize(*a) + ft_lstsize(*b) == 5)
+	if (ft_lstsize(*a) + ft_lstsize(*b) <= 5)
 	{
+		sort_three(a);
+		doble_set(a, b);
 		only_five(a, b);
 	}
-	//else
-	//	plus(a, b);
+	else
+	{
+		doble_set(a, b);
+		plus(a, b);
+	}
 }

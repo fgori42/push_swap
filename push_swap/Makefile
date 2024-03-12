@@ -6,7 +6,7 @@
 #    By: fgori <fgori@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 15:44:57 by fgori             #+#    #+#              #
-#    Updated: 2024/03/06 11:40:53 by fgori            ###   ########.fr        #
+#    Updated: 2024/03/12 14:10:07 by fgori            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ file = main.c\
 		sort_utilis.c\
 		two_utlis.c\
 		multi_move.c\
+		check_goal.c\
+		index.c\
+		str.c\
 		utilis.c
 
 CC = cc

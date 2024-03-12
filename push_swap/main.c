@@ -6,7 +6,7 @@
 /*   By: fgori <fgori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:32:11 by fgori             #+#    #+#             */
-/*   Updated: 2024/03/05 12:22:47 by fgori            ###   ########.fr       */
+/*   Updated: 2024/03/12 14:04:55 by fgori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ int	matcont(char **mat)
 	return (i);
 }
 
-//void	stampaLista(t_list *lista)
-//{
-//	while (lista != NULL)
-//	{
-//		printf("%d ", lista->content);
-//		lista = lista->next;
-//	}
-//	printf("\n");
-//}
-
 void	monostak(t_list **stak, t_list **b, char *str)
 {
 	char	**temp;
@@ -46,7 +36,7 @@ void	monostak(t_list **stak, t_list **b, char *str)
 	if (!(list_ok(temp)))
 	{
 		freeall(temp);
-		put_error(stak, b, "ERROr\ndouble number");
+		put_error(stak, b, "ERROR\ndouble number");
 	}
 	i = matcont(temp) - 1;
 	while (i >= 0)
